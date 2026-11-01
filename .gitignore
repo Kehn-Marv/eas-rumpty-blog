@@ -1,6 +1,7 @@
 # Dependencies & Environment
 node_modules/
 .env
+dist/
 
 # Antigravity agents & customizations
 .agents/

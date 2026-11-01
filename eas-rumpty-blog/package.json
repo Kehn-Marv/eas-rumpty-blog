@@ -4,6 +4,7 @@
   "description": "I Built EAS on RumptyCloud — an editorial publication page",
   "main": "server.js",
   "scripts": {
+    "build": "node build.js",
     "start": "node server.js",
     "dev": "node --watch server.js"
   },
