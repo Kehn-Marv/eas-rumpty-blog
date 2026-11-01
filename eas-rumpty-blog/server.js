@@ -12,11 +12,17 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Health check endpoint for RumptyCloud
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 // Redirect any other route to the article
 app.get('*', (req, res) => {
     res.redirect('/');
 });
 
-app.listen(PORT, () => {
-    console.log(`\n📖 Article server running at http://localhost:${PORT}\n`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n📖 Article server running at http://0.0.0.0:${PORT}\n`);
 });
+
