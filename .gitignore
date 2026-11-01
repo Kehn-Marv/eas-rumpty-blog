@@ -1,0 +1,11 @@
+# Dependencies & Environment
+node_modules/
+.env
+
+# Antigravity agents & customizations
+.agents/
+**/.agents/
+
+# Database files
+*.db
+*.db-journal

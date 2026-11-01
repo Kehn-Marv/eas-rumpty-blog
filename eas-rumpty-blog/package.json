@@ -1,0 +1,14 @@
+{
+  "name": "eas-rumptycloud-article",
+  "version": "1.0.0",
+  "description": "I Built EAS on RumptyCloud — an editorial publication page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "license": "MIT"
+}

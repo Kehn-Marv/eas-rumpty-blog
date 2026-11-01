@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Built EAS on RumptyCloud. Here's What Actually Happened.</title>
+    <meta name="description"
+        content="A detailed, honest account of building and deploying the Educational Agentic System (EAS) on RumptyCloud - the things that worked, the challenges encountered, and the lessons learned.">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="I Built EAS on RumptyCloud. Here's What Actually Happened.">
+    <meta property="og:description"
+        content="A detailed, honest account of building and deploying the Educational Agentic System on RumptyCloud — what worked, what didn't, and what I learned.">
+    <meta property="og:url" content="https://your-domain.com/eas-on-rumptycloud">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://your-domain.com/eas-on-rumptycloud">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/article.css">
+</head>
+
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+        aria-valuemax="100" aria-label="Reading progress">
+        <div class="reading-progress-fill" id="readingProgressFill"></div>
+    </div>
+
+    <!-- Minimal Header -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+
+            <button class="toc-toggle" id="tocToggle" aria-label="Toggle table of contents" aria-expanded="false">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+                <span>Contents</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc-sidebar" id="tocSidebar" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-header">
+                    <span class="toc-label">Contents</span>
+                    <button class="toc-close" id="tocClose" aria-label="Close table of contents">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+                <nav class="toc-nav" id="tocNav">
+                    <!-- Populated by JS -->
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Collapse/Expand toggle -->
+        <button class="toc-collapse-btn" id="tocCollapseBtn" aria-label="Toggle table of contents" title="Toggle contents">
+            <svg class="toc-collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </button>
+
+        <!-- Overlay for mobile ToC -->
+        <div class="toc-overlay" id="tocOverlay"></div>
+
+        <!-- Main Article Content -->
+        <main class="article-main">
+
+            <!-- Article Header -->
+            <header class="article-header">
+                <div class="article-header-inner">
+                    <h1 class="article-title">I Built EAS on RumptyCloud. Here's What Actually Happened.</h1>
+                    <p class="article-subtitle">A detailed, honest account of building and deploying the Educational
+                        Agentic System on RumptyCloud - the things that worked, the challenges encountered, and the
+                        lessons learned.</p>
+                    <span class="article-reading-time" id="readingTime"></span>
+                    <div class="article-header-line"></div>
+                </div>
+            </header>
+
+            <!-- Article Body -->
+            <article class="article-body" id="articleBody">
+
+                <p class="article-lead">lemme start from the beginning.</p>
+
+                <!-- ====== SECTION: What I was building ====== -->
+                <h2 id="what-i-was-building">What I was building</h2>
+
+                <p>I recently embarked on a rather ambitious project for a 30-day sprint hackathon powered by
+                    RumptyCloud &amp; Devcenter. The project is <strong>EAS</strong>, or <strong>Educational Agentic
+                        System</strong>.</p>
+
+                <p>EAS is a web-based interactive learning system I am building to help people understand complex
+                    concepts beyond conventional, text-heavy explanations.</p>
+
+                <p>The idea is simple: a learner should be able to ask a question or explore a difficult concept and
+                    receive an adaptive explanation supported by useful visual representations. These can include
+                    diagrams, concept maps, step-by-step processes, interactive visualisations and animations.</p>
+
+                <p>Rather than giving someone another long block of text and expecting them to figure everything out, I
+                    want EAS to make difficult ideas easier to explore, understand and interact with.</p>
+
+                <p>There is a lot going on behind the interface, including AI-powered learning workflows, document
+                    processing, OCR, retrieval, visualisation generation and an isolated code-execution environment. It
+                    is still evolving, but that is the direction I am building towards.</p>
+
+                <p>You can explore it here:</p>
+
+                <ul>
+                    <li>Live application: <a href="https://major-collie-678f34.rumptycloud.app/" target="_blank"
+                            rel="noopener noreferrer">https://major-collie-678f34.rumptycloud.app/</a></li>
+                    <li>Source code: <a href="https://github.com/Kehn-Marv/eas-web" target="_blank"
+                            rel="noopener noreferrer">https://github.com/Kehn-Marv/eas-web</a></li>
+                </ul>
+
+                <!-- ====== SECTION: Why RumptyCloud? ====== -->
+                <h2 id="why-rumptycloud">Why RumptyCloud?</h2>
+
+                <p>Before EAS, I hadn't spent much time using RumptyCloud.</p>
+
+                <p>For this project, I needed somewhere I could run the entire application stack, manage its supporting
+                    services, store persistent data and accommodate some fairly demanding processing workloads.</p>
+
+                <p>For anyone reading this who is unfamiliar, RumptyCloud is a cloud infrastructure platform for
+                    developers. It offers Linux virtual machines, application deployments, managed databases,
+                    S3-compatible object storage, persistent volumes, Kubernetes, hosted AI inference and other
+                    infrastructure services.</p>
+
+                <p>I wanted to document this experience because I think there's value in sharing what using the platform
+                    actually felt like, especially as a first-time user.</p>
+
+                <p>I'm not writing it to make RumptyCloud look good or bad. I want to be as straightforward as possible
+                    about what I experienced: the things I genuinely liked, the challenges I encountered, the mistakes I
+                    made on my own side, the workarounds I came up with and the things I would love to see improved.</p>
+
+                <p>Some parts were surprisingly smooth. Others were a little more painful than I expected.</p>
+
+                <p>Let's get into it.</p>
+
+                <hr>
+
+                <!-- ====== SECTION: Things I genuinely loved ====== -->
+                <h2 id="things-i-loved">The things I genuinely loved about RumptyCloud</h2>
+
+                <h3 id="love-1-full-stack">1. Being able to run the entire application stack</h3>
+
+                <p>This was easily one of my favourite things.</p>
+
+                <p>EAS wasn't designed to be one simple web application.</p>
+
+                <p>My Docker Compose setup consists of four services:</p>
+
+                <ul>
+                    <li><strong>EAS:</strong> The main application, with the Next.js frontend and FastAPI backend
+                        running together.</li>
+                    <li><strong>Sandbox runner:</strong> A separate service for isolated code execution.</li>
+                    <li><strong>Redis:</strong> Used for internal coordination.</li>
+                    <li><strong>PocketBase:</strong> Used for authentication and supporting storage.</li>
+                </ul>
+
+                <p>I initially explored RumptyCloud's standard App Deployments, but its one-port routing model wasn't a
+                    natural fit for my existing multi-service setup.</p>
+
+                <p>I eventually went with a Linux VM and ran Docker Compose directly on it.</p>
+
+                <p>And honestly, I liked that a lot. why tho? if you might ask, its because:</p>
+
+                <p>I could run the frontend, backend and supporting services together, configure how they communicated,
+                    manage their ports and work with the environment without having to split the application across
+                    multiple hosting providers.</p>
+
+                <p>The sandbox runner, for example, could remain on the internal Docker network without needing its own
+                    public-facing endpoint. The backend could also remain private while the frontend served the public
+                    application.</p>
+
+                <p>For a project like EAS, that flexibility made a real difference.</p>
+
+                <p>I particularly appreciated that I didn't have to redesign the application just to make it fit a more
+                    restrictive deployment model.</p>
+
+                <h3 id="love-2-persistent-volumes">2. Persistent volumes and keeping important data separate</h3>
+
+                <p>RumptyCloud's persistent block volumes offered a way to separate important data from the disposable
+                    application environment.</p>
+
+                <p>The idea is that the application can be rebuilt or replaced while its persistent files remain on the
+                    separately attached volume.</p>
+
+                <p>This was particularly useful for EAS because some document-processing engines require several
+                    gigabytes of model files. I didn't want to download all those models again every time I updated a
+                    Docker image.</p>
+
+                <p>I configured the application to use persistent cache directories for things such as Docling, Hugging
+                    Face, ModelScope and MinerU.</p>
+
+                <h3 id="love-3-snapshots">3. Snapshots and the ability to move to a more powerful VM</h3>
+
+                <p>I initially deployed EAS on the Power plan, which provided 4 GB RAM.</p>
+
+                <p>As the application became more demanding, I started noticing resource pressure. At one point, the CPU
+                    graph reached 100%.</p>
+
+                <p>I eventually moved to the Ultra plan, which provided 8 GB RAM.</p>
+
+                <p>One thing I particularly appreciated was the snapshot-based migration path I explored.</p>
+
+                <p>Instead of treating the upgrade as a completely fresh installation, I could use the existing VM's
+                    boot-disk snapshot as the starting point for another VM, then handle the separate persistent volume
+                    independently.</p>
+
+                <p>That meant Docker images and other files stored on the boot disk could potentially be preserved
+                    through the snapshot, while the application data volume was handled separately.</p>
+
+                <p>I found this a much more sensible migration approach than having to repeat every part of the initial
+                    setup.</p>
+
+                <p>The upgrade to Ultra was useful, although I also learned that more RAM and CPU do not automatically
+                    solve every problem. I'll come back to that.</p>
+
+                <h3 id="love-4-stable-url">4. Updating the application didn't change the public link</h3>
+
+                <p>This might seem like a small thing, but it genuinely mattered to me.</p>
+
+                <p>I had already shared the EAS website to some of my friends. I didn't want to discover
+                    that every time I rebuilt a Docker image or updated the application, the website would get a new
+                    URL.</p>
+
+                <p>That was one of my initial concerns.</p>
+
+                <p>Fortunately, updating the application on the existing VM did not require changing its Rumpty
+                    hostname.</p>
+
+                <p>I could publish a new image, pull it onto the existing VM, replace the relevant containers and
+                    continue using the same public address.</p>
+
+                <p>I also appreciated that the previous healthy containers could remain running while the replacement
+                    image was downloading. There was no need to take the application offline just because an update had
+                    started transferring.</p>
+
+                <h3 id="love-5-vm-access">5. Having access to the actual machine</h3>
+
+                <p>I liked having direct access to the VM through the Rumpty CLI.</p>
+
+                <p>There were several occasions when I needed to investigate something beyond what a deployment
+                    dashboard could tell me.</p>
+
+                <p>I checked running containers, inspected image pulls, examined disk usage, ran commands, checked
+                    health endpoints and investigated why certain features were unavailable.</p>
+
+                <p>The VM metrics were useful too. They helped me see when the machine was under pressure.</p>
+
+                <p>For a project like EAS, where there are several moving pieces, I appreciated having that level of
+                    control.</p>
+
+                <h3 id="love-6-platform-services">6. Rumpty's stuff 😉</h3>
+
+                <p>I also liked the fact that RumptyCloud brings several useful infrastructure components into one
+                    platform.</p>
+
+                <p>VMs, persistent volumes, object storage, managed databases, firewall policies and hosted inference
+                    are all useful building blocks.</p>
+
+                <p>I didn't necessarily end up using every service for EAS, but having them available made the platform
+                    interesting to explore.</p>
+
+                <p>Its hosted inference offering was particularly interesting because it exposes an OpenAI-compatible
+                    API. That makes it possible to use a familiar client interface for supported chat-completion
+                    requests.</p>
+
+                <p>I think there is room for RumptyCloud to make its AI capabilities even more useful to developers,
+                    particularly those building retrieval-heavy applications. I'll explain what I mean in the feedback
+                    section.</p>
+
+                <hr>
+
+                <!-- ====== SECTION: Challenges ====== -->
+                <h2 id="challenges">The challenges I encountered</h2>
+
+                <p>Now, this is where things get a little more interesting.</p>
+
+                <p>I genuinely enjoyed some parts of using RumptyCloud, but I wouldn't be giving an honest account if I
+                    stopped there.</p>
+
+                <p>There were a few things that i didnt like, and some things took a considerable amount of time for me to understand.</p>
+
+                <h3 id="challenge-1-one-port">1. The one-port restriction on standard App Deployments</h3>
+
+                <p>As I mentioned earlier, my original architecture used Docker Compose with several interconnected
+                    services.</p>
+
+                <p>RumptyCloud's standard App Deployments route public traffic to one configured port per deployment.
+                    That port is also used for the deployment's health checks.</p>
+
+                <p>This is an understandable model for many web applications, but it wasn't a natural fit for my
+                    existing Compose architecture.</p>
+
+                <p>I eventually moved to a Linux VM and managed the services myself.</p>
+
+                <p>I don't think every deployment product needs to accommodate every possible application architecture.
+                    However, I would appreciate a clearer guide showing when someone should use standard App Deployments
+                    and when they should choose a VM.</p>
+
+                <p>That distinction would save developers time when deciding how to deploy an application.</p>
+
+                <h3 id="challenge-2-port-8080">2. The default service occupying port 8080 👀</h3>
+
+                <p>This was one of the first unexpected things I encountered during VM setup.</p>
+
+                <p>I had EAS configured to use port 8080, but the application failed to start because the port was
+                    already occupied.</p>
+
+                <p>After investigating, I discovered that the VM's default Rumpty welcome service was using it.</p>
+
+                <p>The issue was resolved by disabling that service:</p>
+
+                <pre><code>sudo systemctl disable --now rumpty-welcome.service</code></pre>
+
+                <p>Before running that command, I would recommend checking what is actually occupying the port:</p>
+
+                <pre><code>sudo ss -tlnp | grep 8080</code></pre>
+
+                <p>If it is the default welcome service, disabling it frees up the port for your application.</p>
+
+                <div class="callout callout-tip">
+                    <div class="callout-indicator"></div>
+                    <div class="callout-content">
+                        <p><strong>Heads up:</strong> If you're deploying an application that needs port 8080, don't
+                            immediately assume your application is broken when you encounter this conflict. Check the
+                            port first.</p>
+                    </div>
+                </div>
+
+                <p>This is something I would love to see made more visible during VM provisioning. It is a small detail
+                    that could save developers a surprising amount of debugging.</p>
+
+                <h3 id="challenge-3-slow-pulls">3. Docker image downloads were painfully slow</h3>
+
+                <p>This was probably my most frustrating experience throughout the deployment.</p>
+
+                <p>The initial EAS image was approximately 4.58 GiB, while the sandbox runner was around 0.32 GiB. Redis
+                    and PocketBase were much smaller, at roughly 16 MiB each.</p>
+
+                <p>That brought the early estimate for all four images to approximately 4.93 GiB.</p>
+
+                <p>And that was just the application images. Parser model files needed to be downloaded separately.</p>
+
+                <p>The transfer speed was the real problem.</p>
+
+                <p>At one point, the largest image layer was moving at approximately 0.4 MB/s. On later attempts, I saw
+                    rates of only a few megabytes per minute.</p>
+
+                <p>Some of the downloads continued for hours.</p>
+
+                <p>I initially wondered whether the transfer was using my own Wi-Fi or the VM's connection.</p>
+
+                <p>It turned out that when the VM pulls an image directly from GitHub Container Registry (GHCR), it is
+                    using its own network connection. My home internet connection isn't involved in that transfer.</p>
+
+                <p>I even upgraded from Power to Ultra, expecting that the more powerful machine might help.</p>
+
+                <p>It didn't automatically solve the problem.</p>
+
+                <div class="callout callout-warning">
+                    <div class="callout-indicator"></div>
+                    <div class="callout-content">
+                        <p><strong>Important lesson:</strong> More RAM and CPU didn't necessarily translate into faster downloads. learnt that the hard way 🥲</p>
+                    </div>
+                </div>
+
+                <p>I couldn't establish from the logs whether the main bottleneck was GHCR, Rumpty's network path,
+                    Docker, or an intermittent connection issue. I don't want to assign blame without the measurements
+                    to support it.</p>
+
+                <p>But from my experience, the transfers were frustratingly slow.</p>
+
+                <h3 id="challenge-4-layer-invalidation">4. A tiny code change</h3>
+
+                <p>This was another problem that made the image-transfer situation worse.</p>
+
+                <p>I made a small change relating to a chat error, but the resulting Docker update involved a layer of
+                    approximately 3.77 GB.</p>
+
+                <p>Why should a relatively small code change mean transferring such a large layer again?</p>
+
+                <p>After reviewing my Dockerfile, I found that I had copied the EAS application source into the
+                    dependency-build stage before installing the Python requirements.</p>
+
+                <p>This meant changes to the application source could invalidate the cache for the much larger
+                    dependency-installation step.</p>
+
+                <p>In other words, part of the problem was my own Docker packaging strategy.</p>
+
+                <p>I started restructuring the image to make its layers more manageable. One of the changes was to split
+                    the installed Python package tree into 64 separate, size-balanced directories, each copied into the
+                    final image using its own Docker instruction.</p>
+
+                <div class="callout callout-note">
+                    <div class="callout-indicator"></div>
+                    <div class="callout-content">
+                        <p><strong>Just so you know:</strong> This is a size-balancing strategy, not true
+                            content-hash partitioning. It can help prevent one enormous layer from becoming the transfer
+                            bottleneck, but it doesn't reduce the total size of a cold image download. Changes to the
+                            files can also cause the balancing assignments to shift, so it doesn't guarantee perfect
+                            layer-cache reuse.</p>
+                    </div>
+                </div>
+
+                <p>I still need proper before-and-after measurements to establish how much it improves real deployment
+                    times.</p>
+
+                <p>I also still need to improve the dependency ordering so that ordinary source-code changes don't
+                    unnecessarily invalidate the expensive Python dependency installation.</p>
+
+                <p>This was a useful lesson for me: sometimes the slow deployment isn't solely about the hosting
+                    provider. How an application is packaged can make a substantial difference.</p>
+
+                <h3 id="challenge-5-local-pull">5. Trying to pull images locally instead</h3>
+
+                <p>Since direct VM-to-GHCR downloads were proving so slow, I tried another approach.</p>
+
+                <p>Rather than asking the Rumpty VM to download the new image, I attempted to pull it through my local
+                    Docker connection and transfer the finished image to the VM.</p>
+
+                <p>The idea was to use my own internet connection for the registry download, then move the image to the
+                    server.</p>
+
+                <p>Several smaller layers downloaded successfully, and Docker reused completed layers on subsequent
+                    retries.</p>
+
+                <p>However, the same large layer repeatedly encountered incomplete-read errors.</p>
+
+                <p>The local route didn't become a reliable replacement for the VM's direct pull.</p>
+
+                <p>I still think it is a useful alternative to explore when a server-side registry download is painfully
+                    slow, but my experience showed that it isn't guaranteed to work all the time.</p>
+
+                <h3 id="challenge-6-resources">6. Resource requirements and the Power-to-Ultra upgrade</h3>
+
+                <p>EAS uses different parsers and processing engines, and not all of them have the same resource
+                    requirements.</p>
+
+                <p>At one point, the CPU graph reached 100%. I started on Power with 4 GB RAM and later moved to Ultra
+                    with 8 GB.</p>
+
+                <p>That gave me more room, but it didn't remove the need to plan around the actual workload.</p>
+
+                <p>For example, the MinerU 3.x configuration I was using has a published 16 GB minimum RAM for the
+                    relevant local-processing setup. My 8 GB Ultra VM was still below that stated baseline.</p>
+
+                <p>That does not mean every EAS parser needs 16 GB. It means heavier processing engines need to be
+                    considered separately when choosing a plan &amp; I'd also love if the RAMs for the plans were bumped
+                    up a little bit or even made to be more flexible / dynamic, in the sense that a user could configure
+                    how much they actually needed, dunno if that's a really good idea, but just a suggestion tho.</p>
+
+                <h3 id="challenge-7-s3-multipart">7. S3-compatible storage and multipart uploads</h3>
+
+                <p>I also encountered an issue integrating EAS with RumptyCloud's S3-compatible object storage.</p>
+
+                <p>When larger uploads went through Boto3's multipart upload path, the operation returned
+                    <code>AccessDenied</code>.
+                </p>
+
+                <p>The cleanup operation for the incomplete upload also returned <code>AccessDenied</code>.</p>
+
+                <p>Smaller uploads using a different path worked.</p>
+
+                <p>As a workaround, I changed the relevant upload path to use a single <code>PutObject</code> request.
+                </p>
+
+                <p>These are questions I still have are about the actual S3 operations and permissions.</p>
+
+                <p>Does the bucket service support the multipart operations Boto3 uses?</p>
+
+                <p>Are particular permissions required to initiate, complete or abort multipart uploads?</p>
+
+                <p>Is there an automatic cleanup policy for incomplete uploads?</p>
+
+                <p>I couldn't establish the cause from the logs available to me, so I don't want to present this as a
+                    confirmed S3 compatibility bug.</p>
+
+                <p>But clearer documentation here would be extremely useful.</p>
+
+                <h3 id="challenge-8-pgvector">8. PostgreSQL, pgvector and AI application requirements</h3>
+
+                <p>This is one of the areas I particularly want to highlight because it matters to developers building
+                    AI applications.</p>
+
+                <p>Many AI applications rely on embeddings, semantic search and retrieval-augmented generation (RAG).
+                </p>
+
+                <p>For context, an embedding model converts text into a numerical representation that can be compared
+                    with other representations to find semantically related content.</p>
+
+                <p>A chat model and an embedding model perform different jobs. Having an inference provider for
+                    generating responses doesn't automatically mean that an application also has an embedding provider.
+                </p>
+
+                <p>During my EAS deployment, my app expected PostgreSQL's
+                    <code>vector</code> extension to be available.
+                </p>
+
+                <p>I couldn't establish whether RumptyCloud's managed PostgreSQL service had pgvector installed, whether
+                    users could enable it themselves using:</p>
+
+                <pre><code>CREATE EXTENSION vector;</code></pre>
+
+                <p>or whether the extension needed to be enabled by the platform.</p>
+
+                <p>A support for pgvector on RumptyCloud would actually go a really long way</p>
+
+                <p>For anyone building AI applications around PostgreSQL, I would strongly recommend confirming
+                    extension availability and permissions before committing to a particular database design.</p>
+
+                <h3 id="challenge-9-embeddings">9. The embedding-provider</h3>
+
+                <p>This is related to the previous point, but it deserves separate attention.</p>
+
+                <p>RumptyCloud provides hosted AI inference through an OpenAI-compatible API. It makes the integration
+                    familiar for developers already using the OpenAI SDK.</p>
+
+                <p>However, the public inference example I found demonstrated chat completions. I couldn't find equally
+                    clear information establishing whether the service also supports an embeddings endpoint such as
+                    <code>/v1/embeddings</code>, or which embedding models are available.
+                </p>
+
+                <p>EAS has a separate embedding-provider configuration, so this is relevant to how I approach
+                    knowledge-base indexing and semantic retrieval.</p>
+
+                <p>I would love to see a clearer breakdown of the inference operations Rumpty supports, especially
+                    whether embedding generation is available alongside chat completions.</p>
+
+                <p>Ideally, the documentation would specify the available models, dimensions, batching support, rate
+                    limits and pricing.</p>
+
+                <p>I don't want to claim that embeddings are unsupported. I simply couldn't confirm the capability from
+                    the information I found.</p>
+
+                <h3 id="challenge-10-my-own-bugs">10. A few issues that were actually on my side</h3>
+
+                <p>Not everything that went wrong during this deployment was a RumptyCloud issue.</p>
+
+                <p>Some of the most visible application errors came directly from my own code and packaging decisions.
+                </p>
+
+                <p>I just felt it's worth acknowledging because not every error encountered while using a cloud
+                    platform is caused by the cloud platform.</p>
+
+                <hr>
+
+                <!-- ====== SECTION: Workarounds ====== -->
+                <h2 id="workarounds">The workarounds that helped me</h2>
+
+                <p>Some of the most useful lessons came from the alternatives I tried when the normal deployment path
+                    wasn't working particularly well.</p>
+
+                <h3 id="workaround-1-background">1. Running long deployment commands in the background</h3>
+
+                <p>The Docker progress output was flooding the interactive terminal and making it difficult to keep the
+                    session attached.</p>
+
+                <p>I moved the deployment script into a background process and redirected its output to a log file on
+                    the VM.</p>
+
+                <p>This allowed the pull to continue independently of the browser terminal session. I could then inspect
+                    progress and health separately.</p>
+
+                <p>It was a simple change, but it made monitoring considerably more manageable.</p>
+
+                <h3 id="workaround-2-local-transfer">2. Pulling images locally and transferring them to the VM</h3>
+
+                <p>I attempted to pull the published image through local Docker and transfer it to the VM.</p>
+
+                <p>The goal was to use my local connection instead of relying entirely on the VM's slow registry
+                    connection.</p>
+
+                <p>This did not become a reliable solution because the large layer repeatedly failed with incomplete
+                    reads. However, completed layers were reused on retries, which was useful.</p>
+
+                <p>I would still keep this as a possible recovery route, not as a guaranteed deployment method.</p>
+
+                <h3 id="workaround-3-targeted-fix">3. Applying a targeted code fix without waiting for another full
+                    image</h3>
+
+                <p>One of the more useful workarounds involved a chat-related application error.</p>
+
+                <p>Rather than waiting for another multi-gigabyte image transfer, I backed up the existing source file
+                    on the VM, copied in the corrected version, checked that it compiled and restarted only the EAS
+                    container.</p>
+
+                <p>The application subsequently reported healthy.</p>
+
+                <h3 id="workaround-4-zero-downtime">4. Keeping the existing application online while images downloaded
+                </h3>
+
+                <p>I was glad the entire application didn't have to go offline just because a new image was being
+                    pulled.</p>
+
+                <p>The previous containers could remain healthy while the replacement image was transferring.</p>
+
+                <p>Only when the image was available did I proceed with replacing the running containers.</p>
+
+                <hr>
+
+                <!-- ====== SECTION: Improvements ====== -->
+                <h2 id="improvements">Where I think RumptyCloud could improve</h2>
+
+                <p>I don't think feedback should stop at listing frustrations. I'd rather explain what would make the
+                    experience better for the next developer.</p>
+
+                <h3 id="improve-1-image-pulls">1. Better image-pull visibility and performance</h3>
+
+                <p>This is my biggest request.</p>
+
+                <p>Large Docker images can make first-time deployments and subsequent updates take hours.</p>
+
+                <p>Better registry connectivity, regional image caching, resumable transfers and more detailed
+                    layer-level progress would make a meaningful difference.</p>
+
+                <p>I'd particularly appreciate being able to see:</p>
+
+                <ul>
+                    <li>The image digest being pulled.</li>
+                    <li>The current layer being transferred.</li>
+                    <li>Bytes downloaded and remaining.</li>
+                    <li>Transfer rate.</li>
+                    <li>Retry count.</li>
+                    <li>The latest error, if a transfer fails.</li>
+                </ul>
+
+                <p>When a pull is taking several hours, knowing whether it's progressing, retrying or genuinely stuck is
+                    important.</p>
+
+                <p>I also recognise that image size and layer caching are partly the developer's responsibility. Still,
+                    better visibility from the platform would make it much easier to distinguish application packaging
+                    issues from network or registry issues.</p>
+
+                <h3 id="improve-2-compose-guide">2. A clearer multi-service Docker Compose deployment guide</h3>
+
+                <p>I would love a practical, end-to-end guide for developers who want to run Docker Compose on a Rumpty
+                    VM.</p>
+
+                <p>It should cover:</p>
+
+                <ul>
+                    <li>Internal service networking.</li>
+                    <li>Public versus private ports.</li>
+                    <li>Reverse proxies.</li>
+                    <li>Firewall configuration.</li>
+                    <li>Persistent volume mounting.</li>
+                    <li>Deployment and image updates.</li>
+                    <li>Health checks.</li>
+                    <li>Recovery and rollback.</li>
+                </ul>
+
+                <p>Rumpty's VM deployment documentation currently explains deployment workflows involving GitHub Actions
+                    and file transfer, but I couldn't find an equally direct guide for the GHCR-based Docker Compose
+                    workflow I used.</p>
+
+                <p>A specific example would make this easier to navigate.</p>
+
+                <h3 id="improve-3-s3-docs">3. More detailed S3 multipart upload documentation</h3>
+
+                <p>The S3-compatible bucket integration is useful, but I'd appreciate an explicit compatibility and
+                    permissions reference.</p>
+
+                <p>I still had these particular questions in mind:</p>
+
+                <ul>
+                    <li>Does the service support multipart initiation, part upload, completion and abort?</li>
+                    <li>What permissions must an access key have for each?</li>
+                    <li>Are incomplete multipart uploads automatically cleaned up?</li>
+                    <li>Is there a configurable lifecycle policy?</li>
+                    <li>Are there request or object-size limitations?</li>
+                </ul>
+
+                <p>This would help developers avoid guessing when an upload fails.</p>
+
+                <h3 id="improve-4-extensions">4. A PostgreSQL extension compatibility list</h3>
+
+                <p>For managed PostgreSQL, a public list of available extensions would be extremely useful.</p>
+
+                <p>I would particularly like to know whether pgvector is available, which PostgreSQL versions support
+                    it, and whether users can enable it themselves.</p>
+
+                <p>For AI developers building RAG applications, this is an important database-planning detail.</p>
+
+                <h3 id="improve-5-ai-docs">5. Clearer AI inference and embedding documentation</h3>
+
+                <p>I'd love to see the hosted inference documentation list its supported API operations and available
+                    models more explicitly.</p>
+
+                <p>Chat completions and embedding generation are different capabilities. Developers building RAG
+                    applications need to know whether both are supported.</p>
+
+                <p>A dedicated embeddings section would be a useful addition.</p>
+
+                <h3 id="improve-6-resource-guidance">6. More guidance for resource-intensive workloads</h3>
+
+                <p>Applications involving OCR, local model execution, document parsing and rendering have different
+                    compute and memory requirements.</p>
+
+                <p>Guidance on sizing VMs for these workloads, monitoring resource consumption and managing concurrency
+                    would help developers make better infrastructure decisions.</p>
+
+                <h3 id="improve-7-first-boot">7. Make first-boot information more visible</h3>
+
+                <p>The port 8080 welcome-service conflict is a good example of something that could be more visible
+                    during VM setup.</p>
+
+                <p>A short notice explaining that a default service may already occupy the port would prevent
+                    unnecessary debugging.</p>
+
+                <h3 id="improve-8-backups">8. Clearer backup and recovery expectations</h3>
+
+                <p>Another thing I noticed while reviewing the managed database documentation was that automatic
+                    database backups, point-in-time recovery and a managed restore flow are not currently available.</p>
+
+                <p>The documentation recommends taking manual backups using tools such as <code>pg_dump</code>.</p>
+
+                <p>This absence didn't cause any EAS incident or bugs tho. But it is important information for anyone
+                    considering the managed PostgreSQL service for valuable production data.</p>
+
+                <p>I'd appreciate making backup expectations particularly prominent during database setup, and
+                    eventually offering scheduled backups and a more convenient restoration process.</p>
+
+                <hr>
+
+                <!-- ====== SECTION: Lessons ====== -->
+                <h2 id="lessons-learned">A few things this experience taught me</h2>
+
+                <p>I learned that getting an application online is only one part of deploying it. Understanding Docker
+                    images, persistent storage, resource requirements, network performance and proper deployment
+                    verification is just as important.</p>
+
+                <p>I also learned to distinguish between platform limitations and problems caused by my own
+                    implementation, rather than immediately blaming one for the other.</p>
+
+                <hr>
+
+                <!-- ====== SECTION: Conclusion ====== -->
+                <h2 id="would-i-use-again">So, would I use RumptyCloud again?</h2>
+
+                <p><strong>Yes. Absolutely.</strong></p>
+
+                <p>Despite the frustrating parts, RumptyCloud gave me the infrastructure flexibility I needed to run EAS
+                    without fundamentally changing its architecture.</p>
+
+                <p>Being able to use a Linux VM, manage my entire Docker Compose stack, attach persistent volumes,
+                    inspect resources and update the application on the existing machine were all genuinely valuable.
+                </p>
+
+                <p>The biggest challenge was getting large images transferred and making the deployment process
+                    repeatable.</p>
+
+                <p>Some of that friction came from my own packaging decisions. Other things, particularly the
+                    multipart-upload errors and the questions around database extensions and embeddings, are areas where
+                    I'd love to see clearer answers from the Rumpty team. I'm sure other developers interested in
+                    building and deploying on the platform would appreciate that clarity too.</p>
+
+                <p><strong>Overall, I'd rate my experience with RumptyCloud an 80/100</strong>, based on my first
+                    experience with the platform and everything I've encountered so far.</p>
+
+                <p>I'm usually one to keep a good find to myself, but honestly, I don't think I'm doing that this time.
+                    I'm more than happy to introduce as many of my developer friends and people in my network to Rumpty
+                    as possible. It's too good a find to keep to myself!</p>
+
+                <p>It's simply my own way of showing support and saying thank you to the developers for building something I genuinely enjoyed
+                    using.</p>
+
+                <p class="article-closing"><strong>A massive kudos to the entire RumptyCloud dev team!</strong> 🫡</p>
+
+                <p>I genuinely can't wait to see where this platform goes over the next few years. There's so much
+                    potential here, and I'm looking forward to seeing what comes next.</p>
+
+            </article>
+
+        </main>
+    </div>
+
+    <script src="js/article.js"></script>
+</body>
+
+</html>
