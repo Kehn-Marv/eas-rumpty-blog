@@ -236,7 +236,6 @@ function initTocToggle() {
     const toggle = document.getElementById('tocToggle');
     const sidebar = document.getElementById('tocSidebar');
     const overlay = document.getElementById('tocOverlay');
-    const close = document.getElementById('tocClose');
 
     if (!toggle || !sidebar) return;
 
@@ -261,7 +260,6 @@ function initTocToggle() {
     };
 
     toggle.addEventListener('click', open);
-    if (close) close.addEventListener('click', closeFunc);
     if (overlay) overlay.addEventListener('click', closeFunc);
 
     document.addEventListener('keydown', (e) => {

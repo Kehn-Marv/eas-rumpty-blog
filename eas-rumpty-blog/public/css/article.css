@@ -258,19 +258,6 @@ button:focus-visible {
     color: var(--text-muted);
 }
 
-.toc-close {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    color: var(--text-muted);
-    border-radius: var(--radius-sm);
-    transition: color var(--transition-fast);
-}
-
-.toc-close:hover {
-    color: var(--text-primary);
-}
 
 .toc-nav {
     display: flex;
@@ -903,9 +890,6 @@ button:focus-visible {
         left: 0;
     }
 
-    .toc-close {
-        display: flex;
-    }
 
     .toc-toggle {
         display: flex;
